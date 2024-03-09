@@ -1,0 +1,61 @@
+{% extends "admin/base_site.html" %}
+
+{% block breadcrumbs %}
+  <div class="breadcrumbs">
+    <a href="{% url 'admin:index' %}">Home</a> &raquo;  
+    <a href="{% url 'admin:orders_order_changelist' %}">orders</a> &raquo;  
+    <a href="{% url 'admin:orders_order_change' order.id %}">order {{order.id}}</a> &raquo; 
+      Detail 
+  </div>
+{% endblock breadcrumbs %}
+
+{% block content %}
+  <h1>Oder {{order.id}}</h1>
+    <table>
+      <tr>
+        <!-- <th>created_at</th>
+        <td>{{order.created_at}}</td> -->
+      </tr>
+      <th>first_name</th>
+        <td>{{order.first_name}}</td>
+      </tr>
+      <th>last_name</th>
+        <td>{{order.last_name}}</td>
+      </tr>
+      <th>email</th>
+        <td>{{order.email}}</td>
+      </tr>
+      <th>city</th>
+        <td>{{order.city}}</td>
+      </tr>
+
+    </table>
+
+<br>
+<br>
+
+<div class="module">
+  <h2>items bought</h2>
+  <table  style="width: 100%;">
+    <thead >
+      <tr>
+        <th>Product name</th>
+        <th>price</th>
+        <th>quantity</th>
+        <th>totalprice</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in order.items.all %}
+        <tr class="row{% cycle '1' '2' %}">
+          <td>{{item.product.name}}</td>
+          <td>{{item.price}}</td>
+          <td>{{item.quantity}}</td>
+          <td>{{item.get_cost}}</td>
+        </tr>      
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock content %}

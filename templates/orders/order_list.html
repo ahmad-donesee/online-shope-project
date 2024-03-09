@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}
+  <h1 style="border-bottom: solid 5px black;padding-bottom:10px">Order list page </h1>
+{% endblock title %}
+{% block content %}
+<div class="container">
+
+  <form action="" method="POST">
+    <h3>Order list</h3>
+    {{form.as_p}}
+    {% csrf_token %}
+    <input type="submit" value="send" class="btn btn-primary" style="text-shadow: 0 0 15px;">
+  </form>
+    
+</div>
+{% endblock content %}

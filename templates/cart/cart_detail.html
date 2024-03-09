@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}
+
+<h2 id="h2" style="border-bottom: solid 5px black; padding-bottom:5px">Cart page</h2>
+
+{% endblock title %}
+
+{% block content %}
+<!-- {% if 'url.name=="cart_detail"' or 'url.name=="cart_update"' %} -->
+
+<div class="container">
+
+<table style="border: solid 5px blue;">
+    <thead style="border-bottom: solid 10px red;">
+        <tr>
+            <th>
+                image
+            </th>
+            <th style="width: 100px;">
+                name
+            </th>
+            <th style="width: 100px;">
+                price
+            </th>
+            <th style="width: 100px;">
+                update
+            </th>
+            <th style="width: 100px;">
+                delete
+            </th>
+            <th style="width: 100px;">
+                number
+            </th>
+            <th style="width: 100px;">
+                total-price
+            </th>
+            
+
+        </tr>
+       
+    </thead>
+    <tbody>
+        {% for cart in cart %}
+        <tr style="border-bottom: solid 3px #ddd;">
+            {% with prod=cart.product %}
+            <td><img src="{{prod.image.url}}" alt="Product Image" style="width: 150px; height:150px"></td>
+            <td>{{prod.name}}</td>
+            <td>{{prod.price}}</td>
+            <td>
+                <form action="{% url 'cart:cart_update' prod.id %}" method="POST">
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <button type="submit" class="btn btn-primary">{% trans "update" %}</button>
+                </form>
+            </td>
+            <td>
+               
+                <form action="{% url 'cart:cart_remove' prod.id %}" method="POST">
+                    {% csrf_token %}
+                    <!-- {{form.as_p}} -->
+                    <button type="submit">{% trans "delet" %}</button>
+                </form>
+            </td>
+            
+            {% endwith %}
+            <td>{{cart.quantity}}  
+            </td>
+            <td>{{cart.total_price}}</td>
+        
+        {% endfor %}
+
+    </tbody>
+</table>
+<div style="width: 100px;"> total_cost:{{cart.get_total_cost}}</div>
+
+<div>
+    <a href="{% url 'product:product_view' %}" class="btn btn-success mt-5 mb-5" style="text-decoration:none">add
+        another product</a>
+</div>
+{% if user.is_authenticated %}
+        
+        <form  action="{% url 'coupons:coupon_view' %}"  method="POST">
+            <div class="form-group">
+              <label  for="formGroupExampleInput2">code</label>
+              <input  type="code" class="form-control" style="width: 20%;" name="code" id="formGroupExampleInput2" placeholder="code..."><span></span>
+            </div>
+            {% csrf_token %}
+            
+            <button type="submit" class="btn btn-success mt-3">sent</button>
+          </form>
+
+
+
+    <p>finalcost after coupon:{{cart.get_total_price_after_discount}}</p>
+
+  <div>
+    <a href="{% url 'orders:order_list' %}" class="btn btn-success mt-5 mb-5" style="text-decoration:none"> check oute </a>
+</div>
+{% else %}
+
+<div>
+    <a href="" class="btn btn-success mt-5 mb-5" style="text-decoration:none">login and check oute</a>
+    <a href="{% url 'register:register_home' %} " class="btn btn-success mt-5 mb-5" style="text-decoration:none">register and check oute</a>
+</div>
+
+{% endif %}
+{% endif %}
+
+
+</div>
+{% endblock content %}
+<!--  -->
+
+<!-- -->

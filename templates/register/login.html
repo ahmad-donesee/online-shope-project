@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}
+<h2 id="h2" style="border-bottom: solid 5px black; padding-bottom:5px">Login Page</h2>
+{% endblock title %}
+
+{% block content %}
+<style>
+  #d1{
+    width:30%;
+  }
+  #d2{
+    color: green;
+  }
+</style>
+<div class="container mt-5">
+  <form  method="POST">
+    <div class="form-group">
+      <label id="d2" for="formGroupExampleInput">username</label>
+      <input id="d1" type="text" class="form-control" name="username" id="formGroupExampleInput" placeholder="username...">
+    </div>
+    <div class="form-group">
+      <label id="d2" for="formGroupExampleInput2">password</label>
+      <input id="d1" type="password" class="form-control" name="password" id="formGroupExampleInput2" placeholder="password..."><span></span>
+    </div>
+    {% csrf_token %}
+    
+    <input type="submit" value="login" class="btn btn-success mt-3">
+  </form>
+  <div class="mt-5">
+    <h5>if forgot your passwoed click hrer:<a href="{% url 'register:password-reset' %}" class="btn btn-success">reset</a> </h5>
+  </div>
+  
+  <div>
+    <h5>if you hant account click here: <a href="{% url 'register:register_home' %}" class="btn btn-success">register</a></h5>
+  </div>
+</div>
+  
+  
+{% endblock content %}

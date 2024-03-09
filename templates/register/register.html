@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}
+<h1 style="border-bottom: solid black 5px ;padding-bottom:5px;">register page</h1>
+{% endblock title %}
+
+{% block content %}
+<style>
+  #d1 {
+    width: 30%;
+  }
+
+  #d2 {
+    color: green;
+  }
+</style>
+<div class="container mt-5">
+  <form method="POST">
+    <div class="form-group">
+      <label id="d2" for="formGroupExampleInput">{% trans "username" %}</label>
+      <input id="d1" type="text" class="form-control" name="username" id="formGroupExampleInput"
+        placeholder="{% trans 'username' %}" required>
+    </div>
+    <div class="form-group">
+      <label id="d2" for="formGroupExampleInput2">{% trans "Email" %}</label>
+      <input id="d1" type="text" class="form-control" name="email" id="formGroupExampleInput2"
+        placeholder="{% trans 'Email' %}" required>
+    </div>
+    <div class="form-group">
+      <label id="d2" for="formGroupExampleInput2">{% trans "password" %}</label>
+      <input id="d1" type="password" class="form-control" name="password1" id="formGroupExampleInput2"
+        placeholder="please enter strong password..."><span></span>
+    </div>
+    <div class="form-group">
+      <label id="d2" for="formGroupExampleInput2">{% trans "password" %}</label>
+      </label>
+      <input id="d1" type="password" class="form-control" name="password2" id="formGroupExampleInput2"
+        placeholder="confirm password...">
+    </div>
+    {% csrf_token %}
+    <input type="submit" value='{% trans "register" %}' class="btn btn-success mt-5">
+  </form>
+  <div>
+    <h5>
+      if you have account click here:<a href="{% url 'register:login_view' %}"
+        class="btn btn-success">{% trans "login" %}
+      </a></h5>
+  </div>
+</div>
+{% blocktrans %}
+if you have account click here
+{% endblocktrans %}
+
+
+{% endblock content %}

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}
+  <h1 style="border-bottom: solid 5px black;padding-bottom:10px">Order success page </h1>
+{% endblock title %}
+{% block content %}
+<div>
+    <h1>YOUR ORDER  HAS BEEN SUCCESSFULLY PLACED!</h1><br/>
+    <h2>Order Number: {{order_number}}</h2><br/>
+    
+    <p>We have sent you an email with details of your order.</p>
+</div>
+{% endblock content %}
