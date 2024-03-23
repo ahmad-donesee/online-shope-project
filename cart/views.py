@@ -5,6 +5,7 @@ from product.models import Product
 from .forms import Product_quantity_Form
 from coupons.forms import CouponForm
 from django.views.decorators.http import require_POST
+
 # Create your views here.
 
 @require_POST
@@ -17,6 +18,7 @@ def cart_add(request,product_id):
         cart.add(product=product,quantity=cd['quantity'],overide_quantity=cd['overide'])
         cart.save()
         return redirect("cart:cart_detail")
+        
     else:
         form=Product_quantity_Form()
         return render(request,'cart/cart_detail.html',{'cart':cart})

@@ -45,7 +45,7 @@
       <div><a class="nav-link active btn btn-success" aria-current="page" href="{% url 'cart:cart_detail' %}">{% trans "goto_cart_page" %}</a></div>
 
     </div>
-    <div class="col-sm-8" style=" border: solid 5px red;">
+    <div class="col-sm-8 overflow-scroll" style=" border: solid 5px red;height:450px">
       {% if 'url.name=="product_view"' %}
       <ul>
         {% for pro in product1 %}

@@ -33,6 +33,7 @@ urlpatterns =i18n_patterns(
     path(_("register/"),include("register.urls",namespace="register")), 
     path(_("orders/"),include("orders.urls",namespace="orders")), 
     path(_("coupons/"),include("coupons.urls",namespace="coupons")), 
+     path(_("zarinpal/"),include("zarinpal.urls",namespace="zarinpal")), 
 )
 urlpatterns +=static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns +=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

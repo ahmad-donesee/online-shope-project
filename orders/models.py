@@ -18,7 +18,6 @@ class Order(models.Model):
     created_at=models.DateTimeField(_("created"),auto_now_add=True)
     update_at=models.DateTimeField(_("update"),auto_now=True)
     
-
     def __str__(self):
         return f"Order by {self.first_name} {self.last_name}"
     

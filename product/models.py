@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.core import serializers
 # Create your models here.
 from django.db import models
 from django.utils import timezone
@@ -32,7 +32,13 @@ class Product(TranslatableModel):
     available=models.BooleanField(default=True)
     update_at=models.DateTimeField(auto_now=timezone.now,db_index=True)
     
-    
+    def serializer(self):
+        if self.image:
+            return{
+                "name": self.name,
+                "price":self.price,
+                "image":self.image.url
+            }
     
     class  Meta:
         ordering=['-update_at','available','created_at']

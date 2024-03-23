@@ -1,17 +1,62 @@
 {% extends "base.html" %}
+{% load i18n %}
+
 
 {% block title %}
   <h1 style="border-bottom: solid 5px black;padding-bottom:10px">Order list page </h1>
 {% endblock title %}
 {% block content %}
-<div class="container">
+<div class="container center">
 
   <form action="" method="POST">
     <h3>Order list</h3>
-    {{form.as_p}}
+    <!-- {{form.as_p}} -->
     {% csrf_token %}
-    <input type="submit" value="send" class="btn btn-primary" style="text-shadow: 0 0 15px;">
+    <div class="form-group">
+      <label id="d2" for="formGroupExampleInput">{% trans "name" %}</label>
+      <input id="d1" type="text" class="form-control" name="first_name" id="formGroupExampleInput"
+        placeholder="{% trans 'name' %}" required>
+    </div>
+    <div class="form-group">
+      <label id="d2" for="formGroupExampleInput2">{% trans "family" %}</label>
+      <input id="d1" type="text" class="form-control" name="last_name" id="formGroupExampleInput2"
+        placeholder="{% trans 'family' %}" required>
+    </div>
+    <div class="form-group">
+      <label id="d2" for="formGroupExampleInput2">{% trans "address" %}</label>
+      <input id="d1" type="text" class="form-control" name="address" id="formGroupExampleInput2"
+        placeholder="address..."><span></span>
+    </div>
+    <div class="form-group">
+      <label id="d2" for="formGroupExampleInput2">{% trans "phone" %}</label>
+      </label>
+      <input id="d1" type="text" class="form-control" name="phone" id="formGroupExampleInput2"
+        placeholder="phone...">
+    </div>
+    <div class="form-group">
+      <label id="d2" for="formGroupExampleInput2">{% trans "email" %}</label>
+      </label>
+      <input id="d1" type="text" class="form-control" name="email" id="formGroupExampleInput2"
+        placeholder="email...">
+    </div>
+    <div class="form-group">
+      <label id="d2" for="formGroupExampleInput2">{% trans "Postal code" %}</label>
+      </label>
+      <input id="d1" type="text" class="form-control" name="postal_code" id="formGroupExampleInput2"
+        placeholder="Postal code...">
+    </div>
+    <div class="form-group">
+      <label id="d2" for="formGroupExampleInput2">{% trans "city" %}</label>
+      </label>
+      <input id="d1" type="text" class="form-control" name="city" id="formGroupExampleInput2"
+        placeholder="City...">
+    </div>
+    <input type="submit" value="send" class="btn btn-primary mt-5 mb-5" style="text-shadow: 0 0 15px;">
   </form>
-    
+    <style>
+      #d1{
+        width: 300px;
+      }
+    </style>
 </div>
 {% endblock content %}

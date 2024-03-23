@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'orders.apps.OrdersConfig',
     'coupons',
     'rosetta',
-    'parler'
+    'parler',
+    'zarinpal',
 ]
 
 MIDDLEWARE = [
@@ -117,7 +118,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-CART_SESSION_ID = 'cart'
+CART_SESSION_ID ='cart'
 
 #language
 from django.utils.translation import gettext_lazy as _
@@ -149,11 +150,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'ahmaddonesee@gmail.com'
-EMAIL_HOST_PASSWORD = 'ahmad@@76A'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_HOST_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = 'ahmaddonesee@gmail.com'
+# EMAIL_HOST_PASSWORD ='@ASdf4356'
 
 
 import os
@@ -164,7 +165,7 @@ LOGIN_REDIRECT_URL='home'
 CART_ITEM_MAXIMUM=100
 
 
-PARLER_DEFAULT_LANGUAGE='en'
+PARLER_DEFAULT_LANGUAGE='fa'
 
 PARLER_LANGUAGES = {
     None: (
@@ -176,3 +177,15 @@ PARLER_LANGUAGES = {
         'hide_untranslated': False,   # the default; let .active_translations() return fallbacks too.
     }
 }
+
+#zarinpal
+
+# SANDBOX MODE
+
+MERCHANT = "00000000-0000-0000-0000-000000000000"
+
+SANDBOX = True
+
+# SESSION_SERIALIZER = 'django.contrib.sessions'
+
+# .PickleSerializer  .serializers

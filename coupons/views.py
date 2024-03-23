@@ -3,6 +3,7 @@ from .forms import  CouponForm
 from django.utils import timezone
 from . models import Coupons
 from django.views.decorators.http import  require_POST
+from django.http import JsonResponse
 # Create your views here.
 
 @require_POST
@@ -17,3 +18,5 @@ def coupon_view(request):
         except:
             request.session['coupon_id']=None
     return redirect("cart:cart_detail")
+    # return JsonResponse({"status":"ok"})
+                         

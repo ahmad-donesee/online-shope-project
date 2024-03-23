@@ -28,3 +28,4 @@ def detail_item_view(request,category_slug,id):
     language=request.LANGUAGE_CODE
     item=get_object_or_404(Product,translations__language_code=language,translations__slug=category_slug,id=id)
     return render(request,'product/detail_item.html',{'item':item,"form":form}) 
+
